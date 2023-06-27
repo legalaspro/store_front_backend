@@ -13,6 +13,68 @@ Your application must make use of the following libraries:
 - jsonwebtoken from npm for working with JWTs
 - jasmine from npm for testing
 
+
+## Project Setup Guide
+
+### Step 1: Create .env File
+
+Create a `.env` file at the root of your project and add the following environment variables:
+
+```env
+POSTGRES_HOST='127.0.0.1'
+POSTGRES_PORT='5432'
+POSTGRES_DB='store_front_dev'
+POSTGRES_TEST_DB='store_front_test'
+POSTGRES_USER='full_stack_user'
+POSTGRES_PASSWORD='some_secret_password'
+ENV=dev
+BCRYPT_PASSWORD='some-secret-bcrypt-password'
+SALT_ROUNDS=10
+```
+
+Replace `'some_secret_password'` and `'some-secret-bcrypt-password'` with your own secure passwords.
+
+### Step 2: Set Up Docker
+
+Run the following command in your terminal to create the Docker database:
+
+```bash
+docker-compose up -d
+```
+
+### Step 3: Database Migrations
+
+To set up all the migrations needed for the `store_front_dev` database, run the following command:
+
+```bash
+npx db-migrate up -e dev
+```
+
+### Step 4: Start the Server
+
+To start the server, use the following command. This starts the nodemon server, which you can use to work and test code:
+
+```bash
+npm run start
+```
+
+### Step 5: Running Tests
+
+To set up the test database on the Docker server, use the following command:
+
+```bash
+npm run create:testdb
+```
+
+To run all the tests, use the following command. This command runs all the migrations, executes all the tests, and then drops all the migrations to clean the database:
+
+```bash
+npm run test:full
+```
+
+With these steps, you should be able to set up the project successfully. 
+
+
 ## Steps to Completion
 
 ### 1. Plan to Meet Requirements
