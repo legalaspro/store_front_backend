@@ -8,9 +8,10 @@
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess \"node ./dist/server.js\"",
     "create:testdb": "npx db-migrate db:create store_front_test",
     "drop:testdb": "npx db-migrate db:drop store_front_test",
-    "test:run": "ENV=test npx ts-node ./jasmine-setup.js",
+    "pretest:run": "npx tsc",
+    "test:run": "ENV=test node ./jasmine-setup.js",
     "test:full": "ENV=test npx db-migrate up -e test && npm run test:run ; npx db-migrate down -e test -c 100",
-    "tsc": "tsc"
+    "tsc": "npx tsc"
   },
   "author": "Udacity",
   "license": "ISC",

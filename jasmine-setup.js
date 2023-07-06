@@ -2,12 +2,21 @@ const Jasmine = require('jasmine');
 const SpecReporter = require('jasmine-spec-reporter').SpecReporter;
 
 const jasmine = new Jasmine();
-jasmine.loadConfigFile('spec/support/jasmine.json'); // adjust if your jasmine.json file is located elsewhere
 
-jasmine.env.clearReporters();
+jasmine.loadConfigFile('spec/support/jasmine.json');
+
+jasmine.env.clearReporters(); 
 jasmine.addReporter(new SpecReporter({
   spec: {
-    displayStacktrace: 'all'
+    displayStacktrace: 'all',
+    displaySpecDuration: true,
+    displaySuiteNumber: true
+  },
+  summary: {
+    displayStacktrace: true
+  },
+  colors: {
+    enabled: true
   }
 }));
 

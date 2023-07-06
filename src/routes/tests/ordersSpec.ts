@@ -134,7 +134,7 @@ describe('Tests for orders API', () => {
   });
 
   // Completed orders by user id
-  describe('GET /complete', () => {
+  describe('GET /api/orders/complete', () => {
     it('should get the completed orders for a user', async () => {
         // First, create a new order and set it to complete
         const orderResponse = await request
